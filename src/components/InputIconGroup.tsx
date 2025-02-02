@@ -11,7 +11,7 @@ const InputIconGroup = ({
   placeholder?: string;
 }) => {
   return (
-    <div className={`flex items-center py-2 px-5 rounded-md bg-[${bgColor}] gap-5`}>
+    <div className={`flex items-center py-2 px-5 border rounded-md bg-[${bgColor}] gap-5`}>
       <input
         placeholder={placeholder}
         className="w-full outline-none  focus:outline-none bg-transparent"

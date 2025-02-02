@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import TopmostHeader from "@/components/TopmostHeader";
 
@@ -6,6 +7,7 @@ export default function Home() {
     <div>
       <TopmostHeader />
       <Navbar />
+      <Footer />
 
     </div>
   );
