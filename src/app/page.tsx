@@ -1,3 +1,4 @@
+import ArrowScroll from "@/components/ArrowScroll";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -21,6 +22,9 @@ export default function Home() {
       <Tags text="-40%" />
       <div className="my-5"></div>
       <ServicesContent />
+
+      <div className="my-5"></div>
+      <ArrowScroll />
 
       <div className="my-5"></div>
       <Footer />
