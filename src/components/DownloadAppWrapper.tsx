@@ -11,13 +11,13 @@ const DownloadAppWrapper = ({
   appName: string;
 }) => {
   return (
-    <div className="border flex items-center">
+    <div className="border cursor-pointer rounded-lg flex gap-2 px-3 items-center">
       <span>
-        <Image src={appIcon} alt="app icon" />
+        <Image src={appIcon} width={28} height={28} alt="app icon" />
       </span>
       <div className="flex justify-center flex-col">
-        <p> {topTitle} </p>
-        <p> {appName} </p>
+        <p className="text-sm"> {topTitle} </p>
+        <p className="text-sm"> {appName} </p>
       </div>
     </div>
   );

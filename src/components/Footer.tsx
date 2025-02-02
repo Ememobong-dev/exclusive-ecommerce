@@ -4,13 +4,14 @@ import qrCode from "../../public/assets/images/qrCode.svg";
 import googlePlay from "../../public/assets/images/google-play.png";
 import appStore from "../../public/assets/images/apple.png";
 import sendIcon from "../../public/assets/icons/sendIcon.svg";
+import copyIcon from "../../public/assets/icons/copyIcon.svg";
 import Image from "next/image";
 import InputIconGroup from "./InputIconGroup";
-import DownloadAppWrapper from "@/components/downloadAppWrapper";
+import DownloadAppWrapper from "./DownloadAppWrapper";
 
 const Footer = () => {
   return (
-    <div className="bg-black text-white flex items-center p-28">
+    <div className="bg-black relative text-white flex flex-col items-center p-28">
       <div className="flex justify-between w-full h-full items-start">
         <div className="flex justify-center gap-y-5 flex-col">
           <span className="cursor-pointer">
@@ -34,7 +35,7 @@ const Footer = () => {
             <p className="text-2xl">Support</p>
           </span>
           <span>
-            <p>111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
+            <p className="w-[75%]">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</p>
           </span>
           <span>
             <p>exclusive@gmail.com</p>
@@ -88,11 +89,11 @@ const Footer = () => {
           <span>
             <p>Save $3 with App New User Only</p>
           </span>
-          <div className="flex h-full justify-between">
-            <span className="cursor-pointer">
-              <Image src={qrCode} alt="qrCode" />
-            </span>
-            <div className="flex h-full flex-col gap-3 justify-center">
+          <div className="flex h-full gap-3 justify-between">
+            <div className="cursor-pointer">
+              <Image src={qrCode} className="" alt="qrCode" />
+            </div>
+            <div className="flex gap-1 flex-col justify-center">
               <DownloadAppWrapper
                 appIcon={googlePlay}
                 appName="Google Play"
@@ -111,6 +112,12 @@ const Footer = () => {
             <p></p>
           </span>
         </div>
+      </div>
+      <div className="flex border-t-2 border-white/40  text-white/40 absolute bottom-0 w-full py-5 justify-center gap-4">
+        <span>
+            <Image src={copyIcon} alt="copy"/>
+        </span>
+        <p>Copyright Rimel 2022. All right reserved</p>
       </div>
     </div>
   );
