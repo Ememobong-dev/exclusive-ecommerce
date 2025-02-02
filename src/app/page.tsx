@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SectionIntroTitle from "@/components/SectionIntroTitle";
+import ServicesContent from "@/components/ServicesContent";
 import Tags from "@/components/Tags";
 import TopmostHeader from "@/components/TopmostHeader";
 
@@ -19,8 +20,9 @@ export default function Home() {
       <div className="my-5"></div>
       <Tags text="-40%" />
       <div className="my-5"></div>
+      <ServicesContent />
 
-
+      <div className="my-5"></div>
       <Footer />
     </div>
   );
