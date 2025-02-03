@@ -226,14 +226,30 @@ export default function Home() {
               <SectionTitle text="New Arrival" />
             </div>
           </div>
-          <Row>
-            <Col xs={12}>
+          <div className="flex justify-between">
             <div className="PS5_img"></div>
+            <div className="flex  w-1/2 flex-col">
+                <div className="women_collection"></div>
+                <div className="flex gap-10 justify-between">
+                  <div className="speaker_img"></div>
+                  <div className="perfume_img"></div>
+                </div>
+              </div>
+          </div>
+          {/* <Row gutter={32}>
+            <Col xs={12} className="h-full">
+              <div className="PS5_img"></div>
             </Col>
-            <Col xs={12}>
-            <div className="PS5_img"></div>
+            <Col xs={12} className="h-full">
+              <div className="flex flex-col">
+                <div className="women_collection"></div>
+                <div className="flex gap-10 justify-between">
+                  <div className="speaker_img"></div>
+                  <div className="perfume_img"></div>
+                </div>
+              </div>
             </Col>
-          </Row>
+          </Row> */}
         </section>
         <section className="pb-28">
           <ServicesContent />
