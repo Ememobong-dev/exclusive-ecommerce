@@ -27,34 +27,36 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50%;
+  width: 100%;
   height: 500px;
   background-color: black;
 }
 .women_collection{
   background: url(../../public/assets/images/womencollection.png);
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 50%;
-  height: 500px;
+  width: 100%;
+  height: 300px;
   background-color: black;
 }
 .speaker_img{
   background: url(../../public/assets/images/speakers.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 50 %;
-  height: 500px;
+  background-size: contain;
+  width: 400px;
+  height: 350px;
+  
   background-color: black;
 }
 .perfume_img{
   background: url(../../public/assets/images/perfume.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 50 %;
-  height: 500px;
+  background-size: contain;
+  width: 400px;
+  height: 350px;
+  
   background-color: black;
 }

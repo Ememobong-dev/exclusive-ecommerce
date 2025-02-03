@@ -4,6 +4,10 @@ import appleLogo from "../../public/assets/images/appleLogo.png";
 import productGame from "../../public/assets/images/product_game.png";
 import product_chair from "../../public/assets/images/product_chair.png";
 import product_keyboard from "../../public/assets/images/product_keyboard.png";
+import ps5 from "../../public/assets/images/PS5.png";
+import womencollection from "../../public/assets/images/womencollection.png";
+import speakers from "../../public/assets/images/speakers.png";
+import perfume from "../../public/assets/images/perfume.png";
 import arrowRightWhite from "../../public/assets/icons/arrowRightWhite.svg";
 import phoneCat from "../../public/assets/icons/phoneCat.svg";
 import wristwatchIcon from "../../public/assets/icons/wristwatchIcon.svg";
@@ -17,7 +21,6 @@ import Button from "@/components/Button";
 import CategoryBox from "@/components/CategoryBox";
 import ServicesContent from "@/components/ServicesContent";
 import Footer from "@/components/Footer";
-import { Col, Row } from "antd";
 
 export default function Home() {
   return (
@@ -226,30 +229,64 @@ export default function Home() {
               <SectionTitle text="New Arrival" />
             </div>
           </div>
-          <div className="flex justify-between">
-            <div className="PS5_img"></div>
-            <div className="flex  w-1/2 flex-col">
-                <div className="women_collection"></div>
-                <div className="flex gap-10 justify-between">
-                  <div className="speaker_img"></div>
-                  <div className="perfume_img"></div>
+          <div className="flex gap-10 justify-between">
+            <div className="bg-black flex justify-center relative w-full text-white">
+              <span>
+                <Image src={ps5} alt="img" className="object-contain w-full h-full " />
+              </span>
+              <div className="absolute bottom-5 left-5">
+                <p>Station 5</p>
+                <p>Black and White version of the PS5 coming out on sale.</p>
+              </div>
+            </div>
+            <div className="flex w-full flex-col gap-9">
+              <div className="bg-[#0D0D0D] flex justify-end relative text-white">
+                <span>
+                  <Image
+                    src={womencollection}
+                    alt="img"
+                    className="object-contain w-full h-[300px]"
+                  />
+                </span>
+                <div className="absolute bottom-5 left-5">
+                  <p>Station 5</p>
+                  <p>Black and White version of the PS5 coming out on sale.</p>
                 </div>
               </div>
+              <div className="flex w-full gap-6 justify-between">
+                <div className="bg-text-two-black/90 w-full relative flex justify-center text-white">
+                  <span>
+                    <Image 
+                      src={speakers}
+                      alt="img"
+                      className="object-contain w-full h-[300px] "
+                    />
+                  </span>
+                  <div className="absolute bottom-5 left-5">
+                    <p>Station 5</p>
+                    <p>
+                      Black and White version of the PS5 coming out on sale.
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-text-two-black/90 w-full relative flex justify-center text-white">
+                  <span>
+                    <Image
+                      src={perfume}
+                      alt="img"
+                      className="object-contain w-full h-[300px] "
+                    />
+                  </span>
+                  <div className="absolute bottom-5 left-5">
+                    <p>Station 5</p>
+                    <p>
+                      Black and White version of the PS5 coming out on sale.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          {/* <Row gutter={32}>
-            <Col xs={12} className="h-full">
-              <div className="PS5_img"></div>
-            </Col>
-            <Col xs={12} className="h-full">
-              <div className="flex flex-col">
-                <div className="women_collection"></div>
-                <div className="flex gap-10 justify-between">
-                  <div className="speaker_img"></div>
-                  <div className="perfume_img"></div>
-                </div>
-              </div>
-            </Col>
-          </Row> */}
         </section>
         <section className="pb-28">
           <ServicesContent />

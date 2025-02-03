@@ -12,6 +12,7 @@ export default {
         "red-secondary-two": "#DB4444",
         "color300" : "#2F2E30",
         "secondaryBlue" : "#F5F5F5",
+         "text-two-black": "#0D0D0D"
       },
     },
   },
