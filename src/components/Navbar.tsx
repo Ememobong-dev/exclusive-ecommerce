@@ -8,7 +8,7 @@ import InputIconGroup from "./InputIconGroup";
 
 const Navbar = () => {
   return (
-    <div className="bg-white border-b py-8 px-28">
+    <div className="bg-white  border-b py-8 px-28">
       <div className="flex  justify-between items-center">
         <span className="cursor-pointer">
           <Image src={logo} alt="brand logo" />
