@@ -6,6 +6,8 @@ import product_chair from "../../public/assets/images/product_chair.png";
 import product_keyboard from "../../public/assets/images/product_keyboard.png";
 import arrowRightWhite from "../../public/assets/icons/arrowRightWhite.svg";
 import phoneCat from "../../public/assets/icons/phoneCat.svg";
+import wristwatchIcon from "../../public/assets/icons/wristwatchIcon.svg";
+import computerIcon from "../../public/assets/icons/computerIcon.svg";
 import Image from "next/image";
 import SectionIntroTitle from "@/components/SectionIntroTitle";
 import SectionTitle from "@/components/SectionTitle";
@@ -13,6 +15,9 @@ import ArrowScroll from "@/components/ArrowScroll";
 import ProductCard from "@/components/ProductCard";
 import Button from "@/components/Button";
 import CategoryBox from "@/components/CategoryBox";
+import ServicesContent from "@/components/ServicesContent";
+import Footer from "@/components/Footer";
+import { Col, Row } from "antd";
 
 export default function Home() {
   return (
@@ -63,29 +68,86 @@ export default function Home() {
           <div className="flex items-center  justify-between my-5">
             <div className="flex  items-center gap-20">
               <SectionTitle text="Flash sales" />
-              <span className="text-4xl tracking-wider">
-                3: 19: 56
-              </span>
+              <span className="text-4xl tracking-wider">3: 19: 56</span>
             </div>
             <ArrowScroll />
           </div>
           <div className="overflow-x-scroll no-scrollbar flex gap-10 w-full">
-            <ProductCard productImg={productGame} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_keyboard} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_chair} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={productGame} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_keyboard} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_chair} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={productGame} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_keyboard} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_chair} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={productGame} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_keyboard} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-            <ProductCard productImg={product_chair} productName="HAVIT HV-G92 Gamepad" productPrice={120} ratings={88} />
-   
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
           </div>
           <div className="my-10 flex justify-center">
-            <Button>
+            <Button variant="red">
               <p>View all products</p>
             </Button>
           </div>
@@ -108,7 +170,13 @@ export default function Home() {
             </CategoryBox>
             <CategoryBox>
               <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
+                <Image src={computerIcon} alt="phone" className="w-full" />
+              </span>
+              <p>Phones</p>
+            </CategoryBox>
+            <CategoryBox>
+              <span>
+                <Image src={wristwatchIcon} alt="phone" className="w-full" />
               </span>
               <p>Phones</p>
             </CategoryBox>
@@ -120,7 +188,13 @@ export default function Home() {
             </CategoryBox>
             <CategoryBox>
               <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
+                <Image src={computerIcon} alt="phone" className="w-full" />
+              </span>
+              <p>Phones</p>
+            </CategoryBox>
+            <CategoryBox>
+              <span>
+                <Image src={wristwatchIcon} alt="phone" className="w-full" />
               </span>
               <p>Phones</p>
             </CategoryBox>
@@ -132,45 +206,40 @@ export default function Home() {
             </CategoryBox>
             <CategoryBox>
               <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
+                <Image src={computerIcon} alt="phone" className="w-full" />
               </span>
               <p>Phones</p>
             </CategoryBox>
             <CategoryBox>
               <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
+                <Image src={wristwatchIcon} alt="phone" className="w-full" />
               </span>
               <p>Phones</p>
             </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-        
-           
           </div>
         </section>
+        {/* New Arrival */}
+        <section className="my-28">
+          <SectionIntroTitle sectionTitle="Featured" />
+          <div className="flex items-center  justify-between my-5">
+            <div className="flex  items-center gap-20">
+              <SectionTitle text="New Arrival" />
+            </div>
+          </div>
+          <Row>
+            <Col xs={12}>
+            <div className="PS5_img"></div>
+            </Col>
+            <Col xs={12}>
+            <div className="PS5_img"></div>
+            </Col>
+          </Row>
+        </section>
+        <section className="pb-28">
+          <ServicesContent />
+        </section>
       </div>
+      <Footer />
     </>
   );
 }

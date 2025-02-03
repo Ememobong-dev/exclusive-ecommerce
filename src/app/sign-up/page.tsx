@@ -30,17 +30,10 @@ const SignUp = () => {
               <AuthInput placeholder="Email or Phone Number" />
               <AuthInput placeholder="Password" />
             </div>
-            <Button>
+            <Button variant="red">
               <p>Create Account</p>
             </Button>
-            <Button classProps="bg-white text-black flex gap-3">
-              <span>
-                <Image
-                  src={googleIcon}
-                  className=" object-cover"
-                  alt="img"
-                />
-              </span>
+            <Button variant="white" icon imgSrc={googleIcon} >
               <p className="text-black">Sign up with Google</p>
             </Button>
             <div className="flex items-center justify-center gap-9">
