@@ -11,13 +11,18 @@ import phoneCat from "../../public/assets/icons/phoneCat.svg";
 import Image from "next/image";
 import IconExtraLayer from "@/components/IconExtraLayer";
 import deliveryIcon from "../../public/assets/icons/deliveryIcon.svg";
-
+import productImg from "../../public/assets/images/product1.svg";
+import Sidebar from "@/components/Sidebar";
+import IconCircleBacground from "@/components/IconCircleBacground";
+import ProductCard from "@/components/ProductCard";
+import AuthInput from "@/components/AuthInput";
 
 export default function Home() {
   return (
     <div className="px-14">
       <TopmostHeader />
       <Navbar />
+      <Sidebar />
       <section className="flex flex-col gap-8">
         <SectionIntroTitle sectionTitle="Today's" />
       </section>
@@ -30,6 +35,15 @@ export default function Home() {
 
       <div className="my-5"></div>
       <ArrowScroll />
+      <div className="my-5"></div>
+
+      <ProductCard
+        productImg={productImg}
+        productName={'Breed Dry Dog Food'}
+        productPrice={100}
+        ratings={35}
+      />
+      <div className="my-5"></div>
 
       <div className="flex gap-10">
         <CategoryBox>
@@ -74,6 +88,11 @@ export default function Home() {
           </span>
         </CategoryBox>
       </div>
+      <div className="my-5"></div>
+      <IconCircleBacground icon={deliveryIcon} />
+      <div className="my-5"></div>
+
+      <AuthInput placeholder="Name" />
 
       <div className="my-5"></div>
       <Footer />
