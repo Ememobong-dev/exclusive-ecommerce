@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import heartIcon from "../../public/assets/icons/heartIcon.svg";
 import eyeIcon from "../../public/assets/icons/eyeIcon.svg";
@@ -11,7 +11,7 @@ const ProductCard = ({
   productPrice,
   ratings,
 }: {
-  productImg: string;
+  productImg: StaticImageData;
   productName: string;
   productPrice: number;
   ratings: number;
