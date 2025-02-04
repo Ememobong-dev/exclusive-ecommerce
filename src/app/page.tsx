@@ -1,13 +1,13 @@
+"use client";
+
+
+
 import Sidebar from "@/components/Sidebar";
 import hero_iphone from "../../public/assets/images/hero_iphone.png";
 import appleLogo from "../../public/assets/images/appleLogo.png";
 import productGame from "../../public/assets/images/product_game.png";
 import product_chair from "../../public/assets/images/product_chair.png";
 import product_keyboard from "../../public/assets/images/product_keyboard.png";
-import ps5 from "../../public/assets/images/PS5.png";
-import womencollection from "../../public/assets/images/womencollection.png";
-import speakers from "../../public/assets/images/speakers.png";
-import perfume from "../../public/assets/images/perfume.png";
 import arrowRightWhite from "../../public/assets/icons/arrowRightWhite.svg";
 import phoneCat from "../../public/assets/icons/phoneCat.svg";
 import wristwatchIcon from "../../public/assets/icons/wristwatchIcon.svg";
@@ -21,8 +21,33 @@ import Button from "@/components/Button";
 import CategoryBox from "@/components/CategoryBox";
 import ServicesContent from "@/components/ServicesContent";
 import Footer from "@/components/Footer";
+import NewArrivals from "@/components/NewArrivals";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
+  const [productData, setProductData]
+
+
+  const getProductsFn = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        "https://fake-store-api.mock.beeceptor.com/api/products"
+      );
+      console.log(response);
+    } catch(err) {
+      console.log(err)
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect ( () => {
+    getProductsFn()
+  }, [] )
+
   return (
     <>
       <div className="px-28">
@@ -221,6 +246,167 @@ export default function Home() {
             </CategoryBox>
           </div>
         </section>
+
+        {/*Best Selling PRODUCTS */}
+        <section className="my-28">
+          <SectionIntroTitle sectionTitle="This Month" />
+          <div className="flex items-center  justify-between my-5">
+            <div className="flex  items-center gap-20">
+              <SectionTitle text="Best selling products" />
+            </div>
+            <Button variant="red">View all</Button>
+          </div>
+          <div className="flex justify-between w-full">
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+          </div>
+        </section>
+
+        {/* BANNER */}
+        <div className="relative mt-10 bg-black text-white w-full flex">
+          <div className="p-12 flex flex-col gap-6">
+            <div className="flex items-center gap-8">
+              <span>
+                <Image src={appleLogo} alt="arrow right" />
+              </span>
+              <span>
+                <p>Iphone 14 Series</p>
+              </span>
+            </div>
+            <h3 className="text-6xl w-[65%]  ">Up to 10% off Voucher</h3>
+            <div className="flex items-center gap-3">
+              <span className=" border-b ">
+                <p>Show Now</p>
+              </span>
+              <span>
+                <Image src={arrowRightWhite} alt="arrow right" />
+              </span>
+            </div>
+          </div>
+          <span>
+            <Image src={hero_iphone} className="w-full h-full" alt="hero img" />
+          </span>
+          <div className="absolute bottom-3 w-full ">
+            <div className="flex justify-center gap-4">
+              <span className="cursor-pointer w-4 h-4 rounded-full p-2 bg-red-secondary-two"></span>
+              <span className="cursor-pointer w-4 h-4 rounded-full p-2 bg-white/50"></span>
+              <span className="cursor-pointer w-4 h-4 rounded-full p-2 bg-white/50"></span>
+              <span className="cursor-pointer w-4 h-4 rounded-full p-2 bg-white/50"></span>
+              <span className="cursor-pointer w-4 h-4 rounded-full p-2 bg-white/50"></span>
+            </div>
+          </div>
+        </div>
+        {/* PRODUCTS */}
+        <section className="my-28">
+          <SectionIntroTitle sectionTitle="Our Products" />
+          <div className="flex items-center  justify-between my-5">
+            <div className="flex  items-center gap-20">
+              <SectionTitle text="Explore our products" />
+            </div>
+            <ArrowScroll />
+          </div>
+          <div className="overflow-x-scroll no-scrollbar flex gap-10 w-full">
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={productGame}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_keyboard}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+            <ProductCard
+              productImg={product_chair}
+              productName="HAVIT HV-G92 Gamepad"
+              productPrice={120}
+              ratings={88}
+            />
+          </div>
+          <div className="my-10 flex justify-center">
+            <Button variant="red">
+              <p>View all products</p>
+            </Button>
+          </div>
+        </section>
         {/* New Arrival */}
         <section className="my-28">
           <SectionIntroTitle sectionTitle="Featured" />
@@ -229,64 +415,7 @@ export default function Home() {
               <SectionTitle text="New Arrival" />
             </div>
           </div>
-          <div className="flex gap-10 justify-between">
-            <div className="bg-black flex justify-center relative w-full text-white">
-              <span>
-                <Image src={ps5} alt="img" className="object-contain w-full h-full " />
-              </span>
-              <div className="absolute bottom-5 left-5">
-                <p>Station 5</p>
-                <p>Black and White version of the PS5 coming out on sale.</p>
-              </div>
-            </div>
-            <div className="flex w-full flex-col gap-9">
-              <div className="bg-[#0D0D0D] flex justify-end relative text-white">
-                <span>
-                  <Image
-                    src={womencollection}
-                    alt="img"
-                    className="object-contain w-full h-[300px]"
-                  />
-                </span>
-                <div className="absolute bottom-5 left-5">
-                  <p>Station 5</p>
-                  <p>Black and White version of the PS5 coming out on sale.</p>
-                </div>
-              </div>
-              <div className="flex w-full gap-6 justify-between">
-                <div className="bg-text-two-black/90 w-full relative flex justify-center text-white">
-                  <span>
-                    <Image 
-                      src={speakers}
-                      alt="img"
-                      className="object-contain w-full h-[300px] "
-                    />
-                  </span>
-                  <div className="absolute bottom-5 left-5">
-                    <p>Station 5</p>
-                    <p>
-                      Black and White version of the PS5 coming out on sale.
-                    </p>
-                  </div>
-                </div>
-                <div className="bg-text-two-black/90 w-full relative flex justify-center text-white">
-                  <span>
-                    <Image
-                      src={perfume}
-                      alt="img"
-                      className="object-contain w-full h-[300px] "
-                    />
-                  </span>
-                  <div className="absolute bottom-5 left-5">
-                    <p>Station 5</p>
-                    <p>
-                      Black and White version of the PS5 coming out on sale.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <NewArrivals />
         </section>
         <section className="pb-28">
           <ServicesContent />
