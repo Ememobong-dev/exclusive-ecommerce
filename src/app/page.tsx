@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import Sidebar from "@/components/Sidebar";
 import hero_iphone from "../../public/assets/images/hero_iphone.png";
 import appleLogo from "../../public/assets/images/appleLogo.png";
@@ -24,29 +22,44 @@ import Footer from "@/components/Footer";
 import NewArrivals from "@/components/NewArrivals";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ShopNowText from "@/components/ShopNowText";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const [productData, setProductData]
-
+  const [productData, setProductData] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const getProductsFn = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        "https://fake-store-api.mock.beeceptor.com/api/products"
-      );
-      console.log(response);
-    } catch(err) {
-      console.log(err)
+      const response = await axios.get("https://fakestoreapi.com/products");
+      setProductData(response.data);
+    } catch (err) {
+      console.log(err);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect ( () => {
-    getProductsFn()
-  }, [] )
+  const getAllCategories = async () => {
+    try {
+      setLoading(true);
+      const categories = await axios.get(
+        "https://fakestoreapi.com/products/categories"
+      );
+      setCategories(categories.data);
+      console.log(categories.data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProductsFn();
+    getAllCategories();
+  }, []);
 
   return (
     <>
@@ -64,14 +77,7 @@ export default function Home() {
                 </span>
               </div>
               <h3 className="text-6xl w-[65%]  ">Up to 10% off Voucher</h3>
-              <div className="flex items-center gap-3">
-                <span className=" border-b ">
-                  <p>Show Now</p>
-                </span>
-                <span>
-                  <Image src={arrowRightWhite} alt="arrow right" />
-                </span>
-              </div>
+              <ShopNowText icon={arrowRightWhite} />
             </div>
             <span>
               <Image
@@ -101,78 +107,15 @@ export default function Home() {
             <ArrowScroll />
           </div>
           <div className="overflow-x-scroll no-scrollbar flex gap-10 w-full">
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
+            {productData.map((product) => (
+              <ProductCard
+                key={product.id}
+                productImg={product.image}
+                productName={product.title}
+                productPrice={product.price}
+                ratings={product.rating.rate}
+              />
+            ))}
           </div>
           <div className="my-10 flex justify-center">
             <Button variant="red">
@@ -187,63 +130,16 @@ export default function Home() {
             <div className="flex  items-center gap-20">
               <SectionTitle text="Browse by category" />
             </div>
-            <ArrowScroll />
           </div>
-          <div className="overflow-x-scroll no-scrollbar flex gap-8 w-full">
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={computerIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={wristwatchIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={computerIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={wristwatchIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={phoneCat} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={computerIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
-            <CategoryBox>
-              <span>
-                <Image src={wristwatchIcon} alt="phone" className="w-full" />
-              </span>
-              <p>Phones</p>
-            </CategoryBox>
+          <div className="flex gap-8 justify-between w-full">
+            {categories.map((cat, index) => (
+              <CategoryBox key={index}>
+                <span>
+                  <Image src={phoneCat} alt="phone" className="w-full" />
+                </span>
+                <p>{cat}</p>
+              </CategoryBox>
+            ))}
           </div>
         </section>
 
@@ -256,31 +152,16 @@ export default function Home() {
             </div>
             <Button variant="red">View all</Button>
           </div>
-          <div className="flex justify-between w-full">
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
+          <div className="flex gap-3 justify-between w-full">
+            {productData.slice(3, 7).map((product) => (
+              <ProductCard
+                key={product.id}
+                productImg={product.image}
+                productName={product.title}
+                productPrice={product.price}
+                ratings={product.rating.rate}
+              />
+            ))}
           </div>
         </section>
 
@@ -327,79 +208,16 @@ export default function Home() {
             </div>
             <ArrowScroll />
           </div>
-          <div className="overflow-x-scroll no-scrollbar flex gap-10 w-full">
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={productGame}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_keyboard}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
-            <ProductCard
-              productImg={product_chair}
-              productName="HAVIT HV-G92 Gamepad"
-              productPrice={120}
-              ratings={88}
-            />
+          <div className="overflow-x-scroll no-scrollbar grid grid-cols-4 justify-between w-full">
+            {productData.map((product) => (
+              <ProductCard
+                key={product.id}
+                productImg={product.image}
+                productName={product.title}
+                productPrice={product.price}
+                ratings={product.rating.rate}
+              />
+            ))}
           </div>
           <div className="my-10 flex justify-center">
             <Button variant="red">

@@ -29,7 +29,7 @@ const ProductCard = ({
     <div>
       <div onMouseEnter={handleHoverEffect} onMouseLeave={() => setShowCartButton(false)} className="flex relative cursor-pointer justify-center rounded-sm  bg-secondaryBlue w-[250px] h-[250px] items-center">
         <span>
-          <Image src={productImg} alt="product_img" />
+          <Image src={productImg} width={100} height={100} alt="product_img" />
         </span>
         <div className="flex flex-col gap-3 absolute right-3 top-3">
           <span className=" bg-white rounded-full p-1">
