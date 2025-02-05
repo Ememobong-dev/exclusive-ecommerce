@@ -3,7 +3,7 @@ import React from 'react';
 
 const ShopNowText = ({icon} : {icon? : string}) => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex cursor-pointer items-center gap-3">
     <span className=" border-b ">
       <p>Show Now</p>
     </span>

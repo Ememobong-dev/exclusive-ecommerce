@@ -21,8 +21,9 @@ const ProductCard = ({
 
 
     const handleHoverEffect = () => {
-        setShowCartButton(true)
+      setShowCartButton(true)
     }
+
 
 
   return (
@@ -45,7 +46,7 @@ const ProductCard = ({
       </div>
 
       <div className="flex mt-3 flex-col gap-1">
-        <p>{productName}</p>
+        <p className="w-1/2"> {productName} </p>
         <span className="flex  gap-5">
           <p> ${productPrice} </p>
           <p> {ratings} </p>

@@ -34,6 +34,8 @@ export default function Home() {
       setLoading(true);
       const response = await axios.get("https://fakestoreapi.com/products");
       setProductData(response.data);
+      console.log(response.data);
+
     } catch (err) {
       console.log(err);
     } finally {
