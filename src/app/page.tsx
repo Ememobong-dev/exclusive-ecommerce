@@ -8,7 +8,7 @@ import phoneCat from "../../public/assets/icons/phoneCat.svg";
 import jewelry from "../../public/assets/icons/Jewelry.png";
 import Suit from "../../public/assets/icons/Suit.png";
 import WomenFashion from "../../public/assets/icons/WomenFashion.png";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import SectionIntroTitle from "@/components/SectionIntroTitle";
 import SectionTitle from "@/components/SectionTitle";
 import ArrowScroll from "@/components/ArrowScroll";
@@ -23,25 +23,13 @@ import { useEffect, useRef, useState } from "react";
 import ShopNowText from "@/components/ShopNowText";
 import TimerCountDown from "@/components/TimerCountDown";
 import { Spin } from "antd";
+import { ProductDataType } from "@/interface";
+import apiCalls from "@/apiCalls/index";
 
 
 
 
 export default function Home() {
-
-
-  interface rating {
-    rate: number;
-    count: number
-  }
-
-  interface ProductDataType {
-   id: number,
-   image: StaticImageData;
-   title: string;
-   price: number;
-   rating: rating;
-  }
   
   const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState<ProductDataType[]>([]);
@@ -51,7 +39,7 @@ export default function Home() {
   const getProductsFn = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await apiCalls.get("/products");
       setProductData(response.data);
       console.log(response.data);
     } catch (err) {
@@ -64,9 +52,7 @@ export default function Home() {
   const getAllCategories = async () => {
     try {
       setLoading(true);
-      const categories = await axios.get(
-        "https://fakestoreapi.com/products/categories"
-      );
+      const categories = await apiCalls.get("categories");
       setCategories(categories.data);
       console.log(categories.data);
     } catch (err) {

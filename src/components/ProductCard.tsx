@@ -6,8 +6,11 @@ import heartIcon from "../../public/assets/icons/heartIcon.svg";
 import eyeIcon from "../../public/assets/icons/eyeIcon.svg";
 import RatingSystem from "./RatingSystem";
 import Tags from "./Tags";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ProductCard = ({
+  productId,
   productImg,
   productName,
   productPrice,
@@ -15,6 +18,7 @@ const ProductCard = ({
   rateCount,
   flashSale,
 }: {
+  productId: number;
   productImg: StaticImageData;
   productName: string;
   productPrice: number;
@@ -23,10 +27,15 @@ const ProductCard = ({
   flashSale?: boolean;
 }) => {
   const [showCartButton, setShowCartButton] = useState(false);
+  const router = useRouter()
 
   const handleHoverEffect = () => {
     setShowCartButton(true);
   };
+
+  const handleViewSinglePorduct = ({id} : {id: number}) => {
+    router.push(`product/${id}`)
+  }
 
   return (
     <div>
@@ -42,7 +51,7 @@ const ProductCard = ({
           <span className=" bg-white rounded-full p-1">
             <Image src={heartIcon} alt="product_img" />
           </span>
-          <span className=" bg-white rounded-full p-1">
+          <span className=" bg-white rounded-full p-1" onClick={() => handleViewSinglePorduct(productId) }>
             <Image src={eyeIcon} alt="product_img" />
           </span>
         </div>
