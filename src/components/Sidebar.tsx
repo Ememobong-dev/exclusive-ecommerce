@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sidebar = () => {
   return (
-    <div className={ ` bg-white md:w-1/2 lg:w-[30%] text-black pt-10 flex flex-col gap-5 border-r-2 ` }>
+    <div className={ ` bg-secondaryBlue md:w-1/2 lg:w-[30%] text-black pt-10 flex flex-col gap-5 border-r-2 ` }>
         <span className='cursor-pointer hover:text-red-secondary-two'> Woman’s Fashion </span>
         <span className='cursor-pointer hover:text-red-secondary-two'> Men’s Fashion </span>
         <span className='cursor-pointer hover:text-red-secondary-two'> Electronics </span>

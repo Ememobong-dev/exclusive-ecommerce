@@ -6,13 +6,26 @@ import arrowRight from "../../public/assets/icons/arrowRight.svg";
 
 
 
-const ArrowScroll = () => {
+const ArrowScroll = ({scrollRef}) => {
+
+  const handleScrollLeft = () => {
+    if(scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  }
+    const handleScrollRight = () => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      }
+    };
+
+
   return (
     <div className="flex gap-3">
-      <span className="cursor-pointer rounded-full w-12 h-12 flex justify-center items-center bg-secondaryBlue">
+      <span  onClick={handleScrollLeft}  className="cursor-pointer rounded-full w-12 h-12 flex justify-center items-center bg-white">
         <Image src={arrowLeft} alt="delivery" />
       </span>
-      <span className="cursor-pointer rounded-full w-12 h-12 flex justify-center items-center bg-secondaryBlue">
+      <span onClick={handleScrollRight} className="cursor-pointer rounded-full w-12 h-12 flex justify-center items-center bg-white">
         <Image src={arrowRight} alt="delivery" />
       </span>
     </div>

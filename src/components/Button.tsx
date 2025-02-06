@@ -6,11 +6,15 @@ const Button = ({
   variant,
   icon,
   imgSrc,
+  isLoading,
+  handleOnClick,
 }: {
   children: ReactNode;
   variant: string;
   icon?: boolean;
+  isLoading?: boolean;
   imgSrc?: string;
+  handleOnClick?: () => void;
 }) => {
   return (
     <button
@@ -21,6 +25,9 @@ const Button = ({
           ? "bg-white text-black border border-color300/30"
           : ""
       } ${icon && "gap-5 items-center"} `}
+       onClick={handleOnClick}
+       disabled={isLoading}
+       
     >
       {icon && (
         <span>

@@ -26,9 +26,11 @@ const ProductCard = ({
 
 
 
+
+
   return (
     <div>
-      <div onMouseEnter={handleHoverEffect} onMouseLeave={() => setShowCartButton(false)} className="flex relative cursor-pointer justify-center rounded-sm  bg-secondaryBlue w-[250px] h-[250px] items-center">
+      <div onMouseEnter={handleHoverEffect} onMouseLeave={() => setShowCartButton(false)} className="flex relative cursor-pointer justify-center rounded-sm  bg-white w-[250px] h-[250px] items-center">
         <span>
           <Image src={productImg} width={100} height={100} alt="product_img" />
         </span>
@@ -46,10 +48,13 @@ const ProductCard = ({
       </div>
 
       <div className="flex mt-3 flex-col gap-1">
-        <p className="w-1/2"> {productName} </p>
+        <p className=""> {productName} </p>
         <span className="flex  gap-5">
-          <p> ${productPrice} </p>
-          <p> {ratings} </p>
+          <p className="text-red-secondary-two font-bold"> ${productPrice} </p>
+        </span>
+        <span>
+        <p> {ratings} </p>
+
         </span>
       </div>
     </div>
