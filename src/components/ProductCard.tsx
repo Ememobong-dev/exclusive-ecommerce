@@ -6,8 +6,7 @@ import heartIcon from "../../public/assets/icons/heartIcon.svg";
 import eyeIcon from "../../public/assets/icons/eyeIcon.svg";
 import RatingSystem from "./RatingSystem";
 import Tags from "./Tags";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const ProductCard = ({
   productId,
@@ -27,14 +26,14 @@ const ProductCard = ({
   flashSale?: boolean;
 }) => {
   const [showCartButton, setShowCartButton] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   const handleHoverEffect = () => {
     setShowCartButton(true);
   };
 
-  const handleViewSinglePorduct = ({id} : {id: number}) => {
-    router.push(`product/${id}`)
+  const handleViewSingleProduct = (id: number) => {
+    router.push(`products/${id}`)
   }
 
   return (
@@ -48,10 +47,10 @@ const ProductCard = ({
           <Image src={productImg} width={100} height={100} alt="product_img" />
         </span>
         <div className="flex flex-col gap-3 absolute right-3 top-3">
-          <span className=" bg-white rounded-full p-1">
+          <span className=" bg-white rounded-full  cursor-pointer p-1">
             <Image src={heartIcon} alt="product_img" />
           </span>
-          <span className=" bg-white rounded-full p-1" onClick={() => handleViewSinglePorduct(productId) }>
+          <span className="bg-white rounded-full cursor-pointer p-1" onClick={() => handleViewSingleProduct(productId) }>
             <Image src={eyeIcon} alt="product_img" />
           </span>
         </div>

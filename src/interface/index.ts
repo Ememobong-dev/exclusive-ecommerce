@@ -1,9 +1,6 @@
 import { StaticImageData } from "next/image";
 
   
-  
-  
-  
 export interface rating {
     rate: number;
     count: number
@@ -15,4 +12,6 @@ export interface ProductDataType {
    title: string;
    price: number;
    rating: rating;
+   category?: string;
+   description?: string;
   }

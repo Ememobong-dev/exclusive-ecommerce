@@ -18,7 +18,6 @@ import CategoryBox from "@/components/CategoryBox";
 import ServicesContent from "@/components/ServicesContent";
 import Footer from "@/components/Footer";
 import NewArrivals from "@/components/NewArrivals";
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import ShopNowText from "@/components/ShopNowText";
 import TimerCountDown from "@/components/TimerCountDown";
@@ -52,7 +51,7 @@ export default function Home() {
   const getAllCategories = async () => {
     try {
       setLoading(true);
-      const categories = await apiCalls.get("categories");
+      const categories = await apiCalls.get("/products/categories");
       setCategories(categories.data);
       console.log(categories.data);
     } catch (err) {
@@ -123,6 +122,7 @@ export default function Home() {
                   productPrice={product.price}
                   ratings={product.rating.rate}
                   rateCount={product.rating.count}
+                  productId={product.id}
                   flashSale
                 />
               ))}
@@ -171,6 +171,7 @@ export default function Home() {
                   productPrice={product.price}
                   ratings={product.rating.rate}
                   rateCount={product.rating.count}
+                  productId={product.id}
                 />
               ))}
             </div>
@@ -221,7 +222,7 @@ export default function Home() {
               <div className="flex  items-center gap-20">
                 <SectionTitle text="Explore our products" />
               </div>
-              <ArrowScroll />
+              {/* <ArrowScroll /> */}
             </div>
             <div className="overflow-x-scroll no-scrollbar grid grid-cols-4 justify-between w-full">
               {productData.map((product) => (
@@ -232,6 +233,7 @@ export default function Home() {
                   productPrice={product.price}
                   ratings={product.rating.rate}
                   rateCount={product.rating.count}
+                  productId={product.id}
                 />
               ))}
             </div>
