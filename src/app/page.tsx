@@ -8,7 +8,7 @@ import phoneCat from "../../public/assets/icons/phoneCat.svg";
 import jewelry from "../../public/assets/icons/Jewelry.png";
 import Suit from "../../public/assets/icons/Suit.png";
 import WomenFashion from "../../public/assets/icons/WomenFashion.png";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import SectionIntroTitle from "@/components/SectionIntroTitle";
 import SectionTitle from "@/components/SectionTitle";
 import ArrowScroll from "@/components/ArrowScroll";
@@ -24,9 +24,27 @@ import ShopNowText from "@/components/ShopNowText";
 import TimerCountDown from "@/components/TimerCountDown";
 import { Spin } from "antd";
 
+
+
+
 export default function Home() {
+
+
+  interface rating {
+    rate: number;
+    count: number
+  }
+
+  interface ProductDataType {
+   id: number,
+   image: StaticImageData;
+   title: string;
+   price: number;
+   rating: rating;
+  }
+  
   const [loading, setLoading] = useState(false);
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState<ProductDataType[]>([]);
   const [categories, setCategories] = useState([]);
   const scrollRef = useRef(null);
 
@@ -103,8 +121,8 @@ export default function Home() {
         <Spin spinning={loading}>
           <section className="my-28">
             <SectionIntroTitle sectionTitle="Today's" />
-            <div className="flex items-center  justify-between my-5">
-              <div className="flex  items-center gap-20">
+            <div className="flex items-center justify-between mb-16 my-5">
+              <div className="flex items-center gap-20">
                 <SectionTitle text="Flash sales" />
                 <TimerCountDown targetDate={"2025-02-10T00:00:00Z"} />
               </div>
@@ -166,6 +184,7 @@ export default function Home() {
                   productName={product.title}
                   productPrice={product.price}
                   ratings={product.rating.rate}
+                  rateCount={product.rating.count}
                 />
               ))}
             </div>
@@ -226,6 +245,7 @@ export default function Home() {
                   productName={product.title}
                   productPrice={product.price}
                   ratings={product.rating.rate}
+                  rateCount={product.rating.count}
                 />
               ))}
             </div>

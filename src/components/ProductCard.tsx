@@ -64,7 +64,7 @@ const ProductCard = ({
       </div>
 
       <div className="flex mt-3 flex-col gap-1">
-        <p className="">
+        <p className="font-bold text-lg">
           {" "}
           {productName.length < 20
             ? productName
@@ -79,7 +79,7 @@ const ProductCard = ({
           )}
 
           
-          <p className={` line-through ${flashSale ? "line-through text-black/50" : "text-red-secondary-two font-bold"} `}>
+          <p className={` ${flashSale ? "line-through text-black/50" : "text-red-secondary-two font-bold"} `}>
             {" "}
             ${productPrice.toFixed(2)}{" "}
           </p>
