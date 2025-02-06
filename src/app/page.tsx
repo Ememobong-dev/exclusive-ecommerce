@@ -117,7 +117,9 @@ export default function Home() {
                   productImg={product.image}
                   productName={product.title}
                   productPrice={product.price}
-                  ratings={product.rating.count}
+                  ratings={product.rating.rate}
+                  rateCount={product.rating.count}
+                  flashSale
                 />
               ))}
             </div>

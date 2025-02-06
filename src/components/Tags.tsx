@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const Tags = ( {text} : {text: string} ) => {
+const Tags = ({ text }: { text: string }) => {
   return (
-    <span className='text-white rounded-sm bg-red-secondary-two p-3'>
-        {text}
+    <span className="text-white text-center rounded-md bg-red-secondary-two py-2 px-4">
+      {text}
     </span>
-  )
-}
+  );
+};
 
-export default Tags
+export default Tags;
