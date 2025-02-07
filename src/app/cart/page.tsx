@@ -15,7 +15,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="px-28">
+      <div className="p-28">
         <Breadcrumb
           items={[
             {
@@ -25,7 +25,7 @@ const Page = () => {
               title: "Cart",
             },
           ]}
-          className="py-20"
+          className="pb-20"
         />
         <div className="bg-white border shadow-md rounded-lg flex items-center justify-between p-8">
           <span className="min-w-[200px]">Product</span>
