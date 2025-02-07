@@ -1,16 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import React, { ReactEventHandler, useState } from "react";
+import React, { useState } from "react";
 import signUpImg from "../../../public/assets/images/signUpImg.svg";
 import AuthInput from "@/components/AuthInput";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import axios from "axios";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 const SignIn = () => {
   const [buttonLoading, setButtonLoading] = useState(false)
@@ -28,8 +28,17 @@ const SignIn = () => {
       setButtonLoading(true)
       const res = await axios.post("https://fakestoreapi.com/auth/login", data);
       if(res.status === 200) {
+        const token = res.data.token;
+
+        const decodedToken = jwtDecode(token);
+        console.log(decodedToken);
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(decodedToken)); 
         router.push('/')
       }
+
+      console.log(res);
 
     } catch (err) {
       console.log(err);

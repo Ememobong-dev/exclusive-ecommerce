@@ -7,6 +7,8 @@ import eyeIcon from "../../public/assets/icons/eyeIcon.svg";
 import RatingSystem from "./RatingSystem";
 import Tags from "./Tags";
 import { useRouter } from "next/navigation";
+import apiCalls from "@/apiCalls";
+import moment from "moment";
 
 const ProductCard = ({
   productId,
@@ -26,6 +28,8 @@ const ProductCard = ({
   flashSale?: boolean;
 }) => {
   const [showCartButton, setShowCartButton] = useState(false);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
   const router = useRouter();
 
   const handleHoverEffect = () => {
@@ -33,8 +37,29 @@ const ProductCard = ({
   };
 
   const handleViewSingleProduct = (id: number) => {
-    router.push(`products/${id}`)
-  }
+    router.push(`products/${id}`);
+  };
+
+  const handleAddToCart = async () => {
+    const cartData = {
+      userId: user.sub,
+      data: moment(),
+      products: [
+        {
+          productId: productId,
+          quantity: 1
+        }
+      ]
+    }
+    try {
+      const response = await apiCalls.post("/carts", cartData);
+      console.log(response, "for carts");
+      setAddedToCart(true)
+    } catch (err) {
+      console.log(err);
+    } finally {
+    }
+  };
 
   return (
     <div>
@@ -50,7 +75,10 @@ const ProductCard = ({
           <span className=" bg-white rounded-full  cursor-pointer p-1">
             <Image src={heartIcon} alt="product_img" />
           </span>
-          <span className="bg-white rounded-full cursor-pointer p-1" onClick={() => handleViewSingleProduct(productId) }>
+          <span
+            className="bg-white rounded-full cursor-pointer p-1"
+            onClick={() => handleViewSingleProduct(productId)}
+          >
             <Image src={eyeIcon} alt="product_img" />
           </span>
         </div>
@@ -62,11 +90,14 @@ const ProductCard = ({
 
         <div
           className={` ${
-            showCartButton ? "flex" : "hidden"
+            showCartButton ? "flex" : addedToCart? "flex": "hidden"
           } flex-col gap-3 w-full absolute z-50 bottom-0`}
         >
-          <button className="bg-black text-white w-full py-2">
-            Add to cart
+          <button
+            onClick={handleAddToCart}
+            className={` w-full py-2  ${addedToCart ? "bg-red-secondary-two text-white": "bg-black text-white"} `}
+          >
+            {addedToCart ? "Added to Cart": "Add to Cart"}
           </button>
         </div>
       </div>
@@ -86,17 +117,21 @@ const ProductCard = ({
             </p>
           )}
 
-          
-          <p className={` ${flashSale ? "line-through text-black/50" : "text-red-secondary-two font-bold"} `}>
+          <p
+            className={` ${
+              flashSale
+                ? "line-through text-black/50"
+                : "text-red-secondary-two font-bold"
+            } `}
+          >
             {" "}
             ${productPrice.toFixed(2)}{" "}
           </p>
           <span className="flex gap-3">
-          <RatingSystem rate={ratings} />
-          <p className="text-black/50 font-semibold">({rateCount}) </p>
+            <RatingSystem rate={ratings} />
+            <p className="text-black/50 font-semibold">({rateCount}) </p>
+          </span>
         </span>
-        </span>
-       
       </div>
     </div>
   );

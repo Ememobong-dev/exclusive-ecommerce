@@ -7,6 +7,7 @@ const Button = ({
   icon,
   imgSrc,
   isLoading,
+  width,
   handleOnClick,
 }: {
   children: ReactNode;
@@ -14,11 +15,14 @@ const Button = ({
   icon?: boolean;
   isLoading?: boolean;
   imgSrc?: string;
+  width?: string;
   handleOnClick?: () => void;
 }) => {
   return (
     <button
-      className={`flex hover:opacity-65 py-3 px-8  justify-center rounded-sm ${
+      className={`flex hover:opacity-65 py-3 px-8  justify-center rounded-sm 
+        ${width}
+        ${
         variant === "red"
           ? "bg-red-secondary-two text-white"
           : variant === "white"
