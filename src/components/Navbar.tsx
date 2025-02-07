@@ -20,7 +20,7 @@ const Navbar = () => {
           <span className="cursor-pointer">Sign Up</span>
         </div>
         <div className="flex gap-5 items-center">
-          <InputIconGroup bgColor="#F5F5F5" placeholder="What are you looking for?" icon={searchIcon} />
+          <InputIconGroup bgColor="" placeholder="What are you looking for?" icon={searchIcon} />
           <span className="cursor-pointer">
             <Image src={wishlistIcon} alt="wishlist" />
           </span>

@@ -24,7 +24,7 @@ const Footer = () => {
             <p>Get 10% off your first order</p>
           </span>
           <InputIconGroup
-            bgColor="#000"
+            bgColor="black"
             placeholder="Enter your email"
             icon={sendIcon}
           />

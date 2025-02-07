@@ -2,7 +2,7 @@
 
 import apiCalls from "@/apiCalls";
 import { Breadcrumb, Col, Row, Spin } from "antd";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ProductDataType } from "@/interface";
 import Image from "next/image";
@@ -16,6 +16,7 @@ import returnDelivery from "../../../../public/assets/icons/returnDelivery.svg";
 import SectionIntroTitle from "@/components/SectionIntroTitle";
 import ProductCard from "@/components/ProductCard";
 import Footer from "@/components/Footer";
+import moment from "moment";
 
 const Page = () => {
   const { productSlug } = useParams();
@@ -25,6 +26,11 @@ const Page = () => {
   );
   const [noOfProduct, setNoOfProduct] = useState(1);
   const [productData, setProductData] = useState<ProductDataType[]>([]);
+    const [addedToCart, setAddedToCart] = useState(false);
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const router = useRouter()
+
+  
 
   const decreaseProductNo = () => {
     setNoOfProduct((prev) => (prev - 1 <= 0 ? 1 : prev - 1));
@@ -59,6 +65,26 @@ const Page = () => {
     }
   };
 
+  const handleAddToCart = async () => {
+    const cartData = {
+      userId: user.sub,
+      data: moment(),
+      products: [
+        {
+          productId: productSlug,
+          quantity: 1,
+        },
+      ],
+    };
+    try {
+      await apiCalls.post("/carts", cartData);
+      router.push("/cart");
+      setAddedToCart(true);
+    } catch (err) {
+      console.log(err);
+    } finally {
+    }
+  };
   useEffect(() => {
     getSingleProductData();
     getProductsFn();
@@ -155,8 +181,10 @@ const Page = () => {
                       <Image src={plusIcon} alt="plus" />{" "}
                     </button>
                   </div>
-                  <Button width="w-[55%]" variant="red">
-                    Buy Now
+                  <Button handleOnClick={handleAddToCart} width="w-[55%]" variant="red">
+                    {
+                        addedToCart ? "Added to cart" : "Buy Now"
+                    }
                   </Button>
                   <span className=" bg-white border border-black rounded-sm  cursor-pointer p-1">
                     <Image src={heartIcon} alt="product_img" />

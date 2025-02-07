@@ -4,6 +4,8 @@ import Image, { StaticImageData } from "next/image";
 import React, { useState } from "react";
 import heartIcon from "../../public/assets/icons/heartIcon.svg";
 import eyeIcon from "../../public/assets/icons/eyeIcon.svg";
+import cartWhiteIcon from "../../public/assets/icons/cartWhiteIcon.svg";
+import deleteIcon from "../../public/assets/icons/deleteIcon.svg";
 import RatingSystem from "./RatingSystem";
 import Tags from "./Tags";
 import { useRouter } from "next/navigation";
@@ -18,14 +20,20 @@ const ProductCard = ({
   ratings,
   rateCount,
   flashSale,
+  showWishlistCartButton,
+  wishList,
+  iconDelete,
 }: {
   productId: number;
   productImg: StaticImageData;
   productName: string;
   productPrice: number;
-  ratings: number;
-  rateCount: number;
+  ratings?: number;
+  rateCount?: number;
   flashSale?: boolean;
+  showWishlistCartButton?: boolean;
+  wishList?: boolean;
+  iconDelete?: boolean;
 }) => {
   const [showCartButton, setShowCartButton] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -47,14 +55,14 @@ const ProductCard = ({
       products: [
         {
           productId: productId,
-          quantity: 1
-        }
-      ]
-    }
+          quantity: 1,
+        },
+      ],
+    };
     try {
       const response = await apiCalls.post("/carts", cartData);
       console.log(response, "for carts");
-      setAddedToCart(true)
+      setAddedToCart(true);
     } catch (err) {
       console.log(err);
     } finally {
@@ -71,17 +79,28 @@ const ProductCard = ({
         <span>
           <Image src={productImg} width={100} height={100} alt="product_img" />
         </span>
-        <div className="flex flex-col gap-3 absolute right-3 top-3">
-          <span className=" bg-white rounded-full  cursor-pointer p-1">
-            <Image src={heartIcon} alt="product_img" />
-          </span>
-          <span
-            className="bg-white rounded-full cursor-pointer p-1"
-            onClick={() => handleViewSingleProduct(productId)}
-          >
-            <Image src={eyeIcon} alt="product_img" />
-          </span>
+        <div className="absolute right-3 top-3">
+          {wishList ? (
+            <div className="flex flex-col gap-3">
+              <span className=" bg-secondaryBlue rounded-full  cursor-pointer p-1">
+                <Image src={ iconDelete ? deleteIcon :  eyeIcon} alt="product_img" />
+              </span>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              <span className=" bg-secondaryBlue rounded-full  cursor-pointer p-1">
+                <Image src={heartIcon} alt="product_img" />
+              </span>
+              <span
+                className="bg-secondaryBlue rounded-full cursor-pointer p-1"
+                onClick={() => handleViewSingleProduct(productId)}
+              >
+                <Image src={eyeIcon} alt="product_img" />
+              </span>
+            </div>
+          )}
         </div>
+
         {flashSale && (
           <div className="absolute left-3 top-3">
             <Tags text={"-30%"} />
@@ -90,14 +109,29 @@ const ProductCard = ({
 
         <div
           className={` ${
-            showCartButton ? "flex" : addedToCart? "flex": "hidden"
+            showCartButton
+              ? "flex"
+              : addedToCart
+              ? "flex"
+              : showWishlistCartButton
+              ? "flex"
+              : "hidden"
           } flex-col gap-3 w-full absolute z-50 bottom-0`}
         >
           <button
             onClick={handleAddToCart}
-            className={` w-full py-2  ${addedToCart ? "bg-red-secondary-two text-white": "bg-black text-white"} `}
+            className={` w-full flex justify-center gap-3 py-2  ${
+              addedToCart
+                ? "bg-red-secondary-two text-white"
+                : "bg-black text-white"
+            } `}
           >
-            {addedToCart ? "Added to Cart": "Add to Cart"}
+            {showWishlistCartButton && (
+              <span>
+                <Image src={cartWhiteIcon} alt="cart icon" />
+              </span>
+            )}
+            <p>{addedToCart ? "Added to Cart" : "Add to Cart"}</p>
           </button>
         </div>
       </div>
@@ -127,10 +161,12 @@ const ProductCard = ({
             {" "}
             ${productPrice.toFixed(2)}{" "}
           </p>
-          <span className="flex gap-3">
-            <RatingSystem rate={ratings} />
-            <p className="text-black/50 font-semibold">({rateCount}) </p>
-          </span>
+          {ratings && (
+            <span className="flex gap-3">
+              <RatingSystem rate={ratings} />
+              <p className="text-black/50 font-semibold">({rateCount}) </p>
+            </span>
+          )}
         </span>
       </div>
     </div>
