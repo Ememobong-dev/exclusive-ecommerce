@@ -22,7 +22,7 @@ const InputIconGroup = ({
   icon,
   placeholder,
 }: {
-  bgColor: string;
+  bgColor?: string;
   icon?: string;
   placeholder?: string;
 }) => {
