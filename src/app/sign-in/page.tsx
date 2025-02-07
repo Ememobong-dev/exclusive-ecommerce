@@ -31,15 +31,10 @@ const SignIn = () => {
         const token = res.data.token;
 
         const decodedToken = jwtDecode(token);
-        console.log(decodedToken);
-
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(decodedToken)); 
         router.push('/')
       }
-
-      console.log(res);
-
     } catch (err) {
       console.log(err);
     } finally {

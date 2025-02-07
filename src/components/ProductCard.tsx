@@ -60,8 +60,7 @@ const ProductCard = ({
       ],
     };
     try {
-      const response = await apiCalls.post("/carts", cartData);
-      console.log(response, "for carts");
+      await apiCalls.post("/carts", cartData);
       setAddedToCart(true);
     } catch (err) {
       console.log(err);

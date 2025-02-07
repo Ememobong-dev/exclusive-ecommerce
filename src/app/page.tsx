@@ -40,7 +40,6 @@ export default function Home() {
       setLoading(true);
       const response = await apiCalls.get("/products");
       setProductData(response.data);
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     } finally {
@@ -53,7 +52,6 @@ export default function Home() {
       setLoading(true);
       const categories = await apiCalls.get("/products/categories");
       setCategories(categories.data);
-      console.log(categories.data);
     } catch (err) {
       console.log(err);
     } finally {

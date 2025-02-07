@@ -10,9 +10,7 @@ export const LabelInput = ({
 }) => {
   return (
     <div className="py-3">
-      <label  htmlFor={labelFor}>
-        {labelTitle}
-      </label>
+      <label htmlFor={labelFor}>{labelTitle}</label>
     </div>
   );
 };
@@ -21,10 +19,12 @@ const InputIconGroup = ({
   bgColor,
   icon,
   placeholder,
+  textArea,
 }: {
   bgColor?: string;
   icon?: string;
   placeholder?: string;
+  textArea?: boolean;
 }) => {
   return (
     <div
@@ -36,11 +36,15 @@ const InputIconGroup = ({
           : "bg-[#F5F5F5]"
       } gap-5`}
     >
-      <input
-        placeholder={placeholder}
-        className="w-full outline-none  focus:outline-none bg-transparent"
-        type="text"
-      />
+      {textArea ? (
+        <textarea placeholder={placeholder} rows={10}  cols={50} className="w-full outline-none  focus:outline-none bg-transparent" />
+      ) : (
+        <input
+          placeholder={placeholder}
+          className="w-full outline-none  focus:outline-none bg-transparent"
+          type={textArea ? "textarea" : "text"}
+        />
+      )}
       {icon && (
         <span className="cursor-pointer">
           <Image src={icon} alt="search_icon" />

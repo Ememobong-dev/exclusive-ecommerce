@@ -17,7 +17,6 @@ const Page = () => {
       setLoading(true);
       const response = await apiCalls.get("/products");
       setProductData(response.data);
-      console.log(response.data);
     } catch (err) {
       console.log(err);
     } finally {
